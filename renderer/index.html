@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; worker-src 'self'; img-src 'self' blob: data:; font-src 'self' blob: data:; style-src 'self' 'unsafe-inline'">
+  <title>Overlayy</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="toolbar">
+    <button id="btn-open" title="Open PDF or image (Ctrl+O)">Open</button>
+
+    <div id="pdf-nav" class="group" hidden>
+      <button id="btn-prev" title="Previous page">&#8249;</button>
+      <span id="page-info">0 / 0</span>
+      <button id="btn-next" title="Next page">&#8250;</button>
+    </div>
+
+    <div class="group">
+      <button id="btn-zoom-out" title="Zoom out (Ctrl+-)">&minus;</button>
+      <button id="btn-fit" title="Fit to width (Ctrl+0)">100%</button>
+      <button id="btn-zoom-in" title="Zoom in (Ctrl+=)">+</button>
+    </div>
+
+    <span id="title" class="drag-fill"></span>
+    <span id="click-through-badge" hidden title="Ctrl+Alt+L to turn off">click-through</span>
+
+    <label class="group opacity" title="Opacity (Ctrl+Alt+[ / ])">
+      <span aria-hidden="true">&#9680;</span>
+      <input id="opacity" type="range" min="10" max="100" step="1" value="100">
+      <span id="opacity-val">100%</span>
+    </label>
+
+    <button id="btn-hide" title="Hide (Ctrl+Alt+O to show again)">&#8211;</button>
+    <button id="btn-quit" title="Quit (Ctrl+Alt+Q)">&times;</button>
+  </header>
+
+  <main id="viewer">
+    <div id="content"></div>
+    <div id="empty">
+      <p><strong>Open</strong> a PDF or image, or drop one here.</p>
+      <p class="hint">Drag the toolbar to move &middot; drag the window edge or the corner grip to resize</p>
+    </div>
+  </main>
+
+  <div id="grip" title="Resize"></div>
+
+  <script type="module" src="renderer.js"></script>
+</body>
+</html>
